@@ -1,46 +1,101 @@
-import React from 'react';
-import { View, TextInput, Button, ImageBackground, Text } from 'react-native';
-import { tailwind } from 'nativewind';
-import medicineBackground from './assets/medicina.png'; // Ruta a la imagen de fondo
+import React from "react";
+import {
+  View,
+  TextInput,
+  ImageBackground,
+  Button,
+  Text,
+  Pressable,
+  StyleSheet,
+} from "react-native";
+import medicineBackground from "./../assets/medicina.png";
 
 const SignupScreen = ({ navigation }) => {
   return (
-    <ImageBackground source={medicineBackground} style={tailwind('flex-1 justify-center items-center')}>
-      <View style={tailwind('bg-white p-4 rounded-lg w-80')}>
-        <TextInput
-          style={tailwind('input mb-2 p-2 border rounded')}
-          placeholder="Nombre"
-        />
-        <TextInput
-          style={tailwind('input mb-2 p-2 border rounded')}
-          placeholder="Edad"
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={tailwind('input mb-2 p-2 border rounded')}
-          placeholder="Correo electrónico"
-          autoCapitalize="none"
-          keyboardType="email-address"
-        />
-        <TextInput
-          style={tailwind('input mb-2 p-2 border rounded')}
-          placeholder="Contraseña"
-          secureTextEntry
-        />
-        <TextInput
-          style={tailwind('input mb-2 p-2 border rounded')}
-          placeholder="Confirmar Contraseña"
-          secureTextEntry
-        />
-        <TextInput
-          style={tailwind('input mb-2 p-2 border rounded')}
-          placeholder="Sexo"
-        />
-        <Button title="Registrarse" onPress={() => navigation.navigate('Login')} />
-        <Text style={tailwind('text-center mt-2 text-blue-500')} onPress={() => navigation.navigate('Login')}>¿Ya tienes una cuenta? Inicia sesión aquí</Text>
-      </View>
-    </ImageBackground>
+    <View style={styles.container}>
+      <ImageBackground source={medicineBackground} style={styles.background}>
+        <View style={styles.formContainer}>
+          <TextInput style={styles.input} placeholder="Nombre" />
+          <TextInput
+            style={styles.input}
+            placeholder="Edad"
+            keyboardType="numeric"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Correo electrónico"
+            autoCapitalize="none"
+            keyboardType="email-address"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Contraseña"
+            secureTextEntry
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirmar Contraseña"
+            secureTextEntry
+          />
+          <TextInput style={styles.input} placeholder="Sexo" />
+          <Pressable
+            style={styles.button}
+            onPress={() => navigation.navigate("Login")}
+          >
+            <Text style={styles.buttonText}>Registrarse</Text>
+          </Pressable>
+          <Text
+            style={styles.link}
+            onPress={() => navigation.navigate("Login")}
+          >
+            ¿Ya tienes una cuenta? Inicia sesión aquí
+          </Text>
+        </View>
+      </ImageBackground>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    justifyContent: "center",
+    alignSelf: "center",
+    opacity: 0.6,
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  formContainer: {
+    backgroundColor: "rgba(255, 255, 255, 0.8)",
+    padding: 20,
+    borderRadius: 10,
+    width: 400,
+    alignSelf: "center",
+  },
+  input: {
+    marginBottom: 10,
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  button: {
+    backgroundColor: "blue",
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "bold",
+  },
+  link: {
+    marginTop: 10,
+    color: "blue",
+    textAlign: "center",
+  },
+});
 
 export default SignupScreen;
